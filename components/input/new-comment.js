@@ -1,11 +1,11 @@
 import classes from './new-comment.module.css'
 import React, { useRef, useState } from 'react'
 
-export default function NewComment() {
+export default function NewComment(props) {
 
   const [isInvalid, setIsInvalid] = useState(false)
 
-  const nameInputRef = useref()
+  const nameInputRef = useRef()
   const emailInputRef = useRef()
   const commentInputRef = useRef()
 
