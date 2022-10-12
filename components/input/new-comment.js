@@ -9,12 +9,12 @@ export default function NewComment(props) {
   const emailInputRef = useRef()
   const commentInputRef = useRef()
 
-  function submitHandler(event) {
+  function submitCommentHandler(event) {
     event.preventDefault()
 
     const enteredEmail = emailInputRef.current.value
     const enteredName = nameInputRef.current.value
-    const enteredComment = commentInputRef.current.valu
+    const enteredComment = commentInputRef.current.value
 
     if (
       !enteredEmail ||
@@ -36,7 +36,7 @@ export default function NewComment(props) {
     })
   }
   return (
-    <form className={classes.form}>
+    <form onSubmit={submitCommentHandler} className={classes.form}>
       <div className={classes.row}>
         <div className={classes.control}>
           <label htmlFor='email'>Your Email</label>
@@ -51,7 +51,7 @@ export default function NewComment(props) {
           <textarea id='name' rows='5' ref={commentInputRef}></textarea>
         </div>
         {isInvalid && <p>Please enter a valid email address and comment!</p>}
-        <button className={classes.button}>Submit</button>
+        <button className={classes.btn}>Submit</button>
       </div>
     </form>
   )
