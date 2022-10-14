@@ -1,5 +1,5 @@
 import classes from './new-comment.module.css'
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 export default function NewComment(props) {
 
@@ -34,6 +34,10 @@ export default function NewComment(props) {
       name: enteredName,
       comment: enteredComment
     })
+
+    emailInputRef.current.value = ''
+    nameInputRef.current.value = ''
+    commentInputRef.current.value = ''
   }
   return (
     <form onSubmit={submitCommentHandler} className={classes.form}>

@@ -13,7 +13,7 @@ export default function Comments(props) {
   useEffect(() => {
     if (showComments) {
       fetch('/api/comments/' + eventId)
-        .then( response => response.json())
+        .then(response => response.json())
         .then(data => {
           setComments(data.comments)
         })
@@ -26,7 +26,23 @@ export default function Comments(props) {
 
   function addCommentHandler(commentData) {
     // send data to API
-    console.log(commentData)
+    // console.log(commentData)
+    fetch('/api/comments/' + eventId, {
+      method: 'POST',
+      body: JSON.stringify(commentData),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Data: ', data)
+
+        const updatedComments = [...comments]
+        updatedComments.push(data.comment)
+        setComments(updatedComments)
+      })
+
   }
 
   return (

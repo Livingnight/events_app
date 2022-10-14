@@ -8,8 +8,8 @@ export default function CommentList(props) {
     <ul className={classes.comments}>
       {/* {Render list of comments - fetched from api} */}
       {items.map( item => (
-        <li key={item.id}>
-          <p>{item.text}</p>
+        <li key={item._id}>
+          <p>{item.comment}</p>
           <div>
             By <address>{item.name}</address>
           </div>
